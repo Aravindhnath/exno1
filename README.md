@@ -112,7 +112,122 @@ df
 ## OUTPUT:
 ![Output](Op12-ds1.png)
 
+## 13) Outlier detection and removal
+```Python
+import pandas as pd
+import seaborn as sns
+age=[1,3,28,27,25,92,30,39,40,50,26,24,29,94]
+dff=pd.DataFrame(age)
+dff
+```
+## OUTPUT:
+![Output](Op13-ds1.png)
+
+## 14) Boxplot
+```Python
+dsf=sns.boxplot(dff)
+```
+## OUTPUT:
+![Output](Op14-ds1.png)
+
+## 15) Scatterplot
+```Python
+dsf=sns.scatterplot(dff)
+```
+## OUTPUT:
+![Output](Op15-ds1.png)
+
+## 16) IQR
+```Python
+q1=dff.quantile(0.25)
+q2=dff.quantile(0.5)
+q3=dff.quantile(0.75)
+iqr=q3-q1
+iqr
+```
+## OUTPUT:
+![Output](Op16-ds1.png)
+
+## 17) Checking the high and low value
+```Python
+low=q1-1.5*iqr
+low
+high=q3+1.5*iqr
+high
+```
+## OUTPUT:
+![Output](Op17-ds1.png)
+![Output](Op18-ds1.png)
+
+## 18) Filtering outlier value
+```Python
+dff=dff[((dff>=low)&(dff<=high))]
+dff
+```
+## OUTPUT:
+![Output](Op19-ds1.png)
+
+### 19) Dropping the null value
+```Python
+dff.dropna()
+```
+## OUTPUT:
+![Output](Op20-ds1.png)
+
+## 20) Box plotting after filtering outlier
+```Python
+sns.boxplot(data=dff)
+```
+## OUTPUT:
+![Output](Op21-ds1.png)
+
+## 21) Z Score
+```Python
+import pandas as pd
+import seaborn as sns
+import numpy as np
+from scipy import stats
+data={'weight':[12,15,18,21, 24, 27, 30, 33, 36, 39, 42, 45, 48, 51, 54, 57,60,63,66,69,202,72, 75, 78, 81, 84, 232, 87, 90, 93,96,99,258]}
+ds=pd.DataFrame(data)
+ds
+```
+## OUTPUT:
+![Output](Op22-ds1.png)
+
+## 22) Z Score
+```Python
+import pandas as pd
+import seaborn as sns
+import numpy as np
+from scipy import stats
+data={'weight':[12,15,18,21, 24, 27, 30, 33, 36, 39, 42, 45, 48, 51, 54, 57,60,63,66,69,202,72, 75, 78, 81, 84, 232, 87, 90, 93,96,99,258]}
+ds=pd.DataFrame(data)
+ds
+```
+## OUTPUT:
+![Output](Op23-ds1.png)
+
+## 23) Z Score
+```Python
+sns.boxplot(data=ds)
+```
+## OUTPUT:
+![Output](Op24-ds1.png)
+
+## 24) Z Score
+```Python
+z=np.abs(stats.zscore(ds))
+z
+```
+## OUTPUT:
+![Output](Op25-ds1.png)
+
+# 25)Z score 
+```Python
+print(ds[z['weight']>3])
+```
+## OUTPUT:
+![Output](Op26-ds1.png)
+
 ## Result
 Hence the data was cleaned , outliers were detected and removed.
-
-

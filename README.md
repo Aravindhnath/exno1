@@ -222,7 +222,7 @@ z
 ## OUTPUT:
 ![Output](Op25-ds1.png)
 
-# 25)Z score 
+## 25) Z score 
 ```Python
 print(ds[z['weight']>3])
 ```
